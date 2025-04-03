@@ -1,0 +1,19 @@
+{
+  "extends": ["taro/react"],
+  "plugins": ["taro"],
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "jsx-quotes": "off",
+    "react/jsx-closing-bracket-location": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
