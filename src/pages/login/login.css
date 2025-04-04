@@ -1,3 +1,4 @@
+/* login.css */
 .login-container {
     width: 350px;
     border: 1px solid #eaeaea;
@@ -7,30 +8,67 @@
     border-radius: 15px;
     box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .login-container .login-title {
     text-align: center;
     margin-bottom: 40px;
     color: #505458;
     font-size: 20px;
+    width: 100%;
 }
-.login-container .login-form {
-    width: 198px;
+
+.login-container .form-item {
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 14px;
 }
+
+.login-container .form-item .taro-checkbox_checked {
+    width: 20px;
+    height: 20px;
+}
+
+.login-container .form-item .label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+    font-size: 14px;
+}
+
+.login-container .form-item input {
+    width: 100%;
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
 .login-container .login-button {
-    text-align: center;
-}
-.login-container .login-button .ant-form-item-control-input-content {
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
-button {
+
+.login-container .login-button taro-button-core {
     background-color: #1677ff;
     color: white;
+    border: none;
     border-radius: 6px;
-    width: 120px;
+    width: 50%;
     height: 32px;
     text-align: center;
     vertical-align: middle;
-    margin-right: 10px;
+    margin: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.login-container .login-button button:last-child {
+    margin-right: 0;
 }

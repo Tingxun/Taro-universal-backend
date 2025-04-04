@@ -13,7 +13,7 @@ const { Header } = Layout;
 function HeaderComponent({collapsed, setCollapsed}) {
 
   function logout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     Taro.redirectTo({
       url: '/pages/login/index',
     });
