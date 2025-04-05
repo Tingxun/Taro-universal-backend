@@ -21,12 +21,11 @@ function Login() {
         title: '请输入账号名和密码',
         icon: 'none',
       });
-      console.log('loginForm', formData);
       return;
     }
 
     getMenu(formData).then((res) => {
-      console.log('res', res);
+      // console.log('res', res);
       if (res.data.code === -20000) {
         showToast({
           title: res.data.data.message,
@@ -78,12 +77,14 @@ function Login() {
           onInput={(e) => setFormData({ ...formData, password: e.detail.value })}
         />
       </View>
-      
+
       <View className="form-item remember-section">
         <Checkbox
           checked={formData.remember}
           className="custom-checkbox"
-          onChange={(e) => setFormData({ ...formData, remember: e.detail.value })}
+          onClick={(e) => 
+            setFormData({ ...formData, remember: !formData.remember })
+          }
         />
         <View className="remember-text">记住登录状态</View>
       </View>
@@ -92,7 +93,9 @@ function Login() {
         <Button className="login-btn primary" onClick={handleSubmit}>
           立即登录
         </Button>
-        <Button className="login-btn link">注册新账户</Button>
+        <Button className="login-btn link" onClick={() => 
+        Taro.redirectTo({ url: '/pages/register/index' })
+        }>注册新账户</Button>
       </View>
     </View>
   );

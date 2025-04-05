@@ -1,12 +1,48 @@
 import Mock from 'mockjs';
 
+const userDatabase = {
+    'admin': { username: 'admin', password: 'admin' },
+    'user': { username: 'user', password: 'user' }
+};
+
 const loginData = {
-    getMenu: (config) => {
-        // console.log('loginData', config);
+    check: (config) => {
         const {username, password} = JSON.parse(config.body);
-        // 先判断用户是否存在
-        // 判断账号和密码是否对应
-        if (username === 'admin' && password === 'admin') {
+        // 检查用户是否存在于模拟数据库中
+        if (userDatabase[username] && userDatabase[username].password === password) {
+            return {
+                code: -20000,
+                data: {
+                    token: Mock.Random.guid(),
+                    message: '用户已存在注册失败'  
+                } 
+            }  
+        } else {
+            return {
+                code: 20000,
+                data: {
+                    token: Mock.Random.guid(),
+                    message: '用户不存在可以注册'
+                }
+            }
+        }
+    },
+    register: (config) => {
+        const {username, password} = JSON.parse(config.body);
+        // 将注册信息存入模拟数据库
+        userDatabase[username] = { username, password };
+        return {
+            code: 20000,
+            data: {
+                message: '注册成功',
+                token: Mock.Random.guid()
+            }
+        };
+    },
+    getMenu: (config) => {
+        const {username, password} = JSON.parse(config.body);
+        // 检查用户是否存在于模拟数据库中
+        if (userDatabase[username] && userDatabase[username].password === password) {
             return {
                 code: 20000,
                 data: {

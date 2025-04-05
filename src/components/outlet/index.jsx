@@ -3,6 +3,7 @@ import Home from '../../pages/home';
 import User from '../../pages/user';
 import Mall from '../../pages/mall';
 import Login from '../../pages/login';
+import Register from '../../pages/register';
 
 function Outlet ({ path }) {
 
@@ -16,6 +17,8 @@ function Outlet ({ path }) {
             return <Mall />;
         case '/pages/login/index':
             return <Login />;
+        case '/pages/register/index':
+            return <Register />;
         default:
             return <Home />;
     }

@@ -1,5 +1,4 @@
 .login-container {
-  /* 容器基础样式保持不变 */
   width: 86%;
   max-width: 400px;
   margin: 100px auto;
@@ -7,7 +6,6 @@
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  /* 新增过渡动画 */
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -16,7 +14,6 @@
   transform: translateY(-2px);
 }
 
-/* 表单项层级优化 */
 .login-container .form-item {
   margin-bottom: 15px;
 }
@@ -29,21 +26,17 @@
 }
 
 .login-container .form-item .custom-input {
-  /* 原有样式保持不变 */
   height: 40px;
   font-size: 14px;
   padding: 0 12px;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   transition: all 0.2s ease;
-  
-  /* 新增对齐修正 */
   display: flex;
   align-items: center;
   line-height: 1.5;
 }
 
-/* 添加 placeholder 对齐修正 */
 .login-container .form-item .custom-input::placeholder {
   position: relative;
   top: 1px;
@@ -51,30 +44,11 @@
   font-size: 13px;
 }
 
-/* 记住密码区域层级优化 */
-.login-container .remember-section {
-  display: flex;
-  align-items: center;
-  margin: 18px 0;
-}
-
-.login-container .remember-section .custom-checkbox {
-  transform: scale(0.8);
-  margin-right: 5px;
-}
-
-.login-container .remember-section .remember-text {
-  color: #666;
-  font-size: 13px;
-  margin-top: 12px;
-}
-
 .login-container .action-buttons {
   margin-top: 30px;
 }
 
 .login-container .login-btn {
-  /* 按钮基础样式 */
   width: 100%;
   height: 48px;
   border-radius: 8px;
@@ -84,12 +58,10 @@
   line-height: 48px;
 }
 
-/* 保持原有按钮颜色样式 */
 .login-container .login-btn.primary {
   background: #1677ff;
   color: white;
   margin-bottom: 15px;
-  /* 新增悬停效果 */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -106,27 +78,6 @@
 .login-container .form-item .custom-input:hover {
   border-color: #a0c2ff;
 }
-
-.login-container .remember-section:hover .custom-checkbox {
-  transform: scale(1);
-  color: #4096ff;
-}
-
-/* 保持原有代码结构 */
-.login-container .remember-section .custom-checkbox {
-  transition: all 0.2s ease;  /* 添加过渡动画 */
-}
-
-.login-btn.primary:active {
-  background: #4096ff;
-}
-
-.login-btn.link {
-  background: transparent;
-  color: #1677ff;
-  border: none;
-}
-
 
 .login-container .login-header {
   margin-bottom: 10px;

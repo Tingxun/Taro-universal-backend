@@ -53,3 +53,19 @@ export function getMenu(data) {
         data
     })
 }
+
+export function registerUser(data) {
+    return http.request({
+        url: "/permission/register",
+        method: "post",
+        data
+    })
+}
+
+export function checkUser(data) {
+    return http.request({
+        url: "/permission/check",
+        method: "post",
+        data
+    })
+}
