@@ -1,42 +1,87 @@
-* {
+.home * {
   box-sizing: border-box;
 }
-/* 弹性布局 */
-.flex-container {
+
+/* 基础弹性布局 */
+.home .flex-container {
   display: flex;
   flex-wrap: wrap;
   flex: 100%;
+}
+
+/* 响应式断点 */
+/* 小程序端 (小于768px) */
+@media (max-width: 767px) {
+  .home .sale-row, .home .chart-row {
+    flex-direction: column;
   }
-.sale-row {
+  .home .leftcolumn, .home .rightcolumn, .home .col-8 {
+    flex: 100% !important;
+  }
+  .home .user {
+    flex-direction: column;
+    text-align: center;
+  }
+  .home .user .user-info, .home .user .user-avatar {
+    flex: 100%;
+  }
+}
+
+/* 平板端 (768px-1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home .col-8 {
+    flex: 50% !important;
+  }
+}
+
+/* 大屏幕端 (1024px以上) */
+@media (min-width: 1025px) {
+  .home .flex-container {
+    flex-direction: row;
+  }
+  .home .leftcolumn {
+    flex: 40%;
+  }
+  .home .rightcolumn {
+    flex: 60%;
+  }
+}
+
+/* 默认布局 */
+.home .sale-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
 }
-.chart-row {
+
+.home .chart-row {
   display: flex;
 }
-.leftcolumn {
+
+.home .leftcolumn {
   flex: 40%;
 }
-.rightcolumn {
+
+.home .rightcolumn {
   flex: 60%;
 }
-.col-8 {
+
+.home .col-8 {
   flex: 33.33%;
 }
 /* 卡片 */
-.card {
+.home .card {
   background-color: white;
   margin: 10px;
   padding: 20px;
   border-radius: 25px;
 }
-.card:hover {
+.home .card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 /* 其他 */
-.user {
+.home .user {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -44,27 +89,27 @@
   padding-bottom: 10px;
   border-bottom: 3px solid rgba(0, 0, 0, 0.1);
 }
-.user .user-info {
+.home .user .user-info {
   flex: 50%;
 }
-.user .user-avatar {
+.home .user .user-avatar {
   flex: 50%;
 }
-.login-info {
+.home .login-info {
   text-align: start;
   padding-top: 10px;
 }
-.login-info p {
+.home .login-info text {
   line-height: 2px;
   font-size: 14px;
   color: lightgray;
 }
-.login-info p span {
+.home .login-info text span {
   line-height: 30px;
   font-size: 14px;
   color: gray;
 }
-.sale-row .icon-box {
+.home .sale-row .icon-box {
   width: 80px;
   height: 80px;
   line-height: 85px;
@@ -72,10 +117,10 @@
   color: white;
   border-radius: 0 25px 0 25px;
 }
-.sale-row .icon-box .anticon {
+.home .sale-row .icon-box .anticon {
   font-size: 30px;
 }
-.sale-row .sale-info {
+.home .sale-row .sale-info {
   line-height: 30px;
   text-align: center;
 }

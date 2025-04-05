@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'antd';
+import { View, Text, Image } from '@tarojs/components';
 import * as Icon from '@ant-design/icons';
 import Echarts from '../../components/echarts';
 import { getHomeData } from '../../api/index';  
@@ -126,37 +127,38 @@ function Home() {
     }, []);
     
     return (
-        <div className='flex-container'>
-            <div className='leftcolumn'>
-                <div className='card'>
-                    <div className='user'>
-                        <img 
+        <View className='home'>
+        <View className='flex-container'>
+            <View className='leftcolumn'>
+                <View className='card'>
+                    <View className='user'>
+                        <Image 
                         className='user-avatar'
-                        src={userImg} alt='User Avatar' 
-                        width='150px' height='150px'
-                        style={{borderRadius: '50%', flex: '0 0 150px'}}
+                        src={userImg} 
+                        mode='aspectFill'
+                        style={{borderRadius: '50%', flex: '0 0 150px', width: '150px', height: '150px'}}
                         />
-                        <div className='user-info'>
-                            <p style={{fontSize: '25px'}}><b>Adimin</b></p>
-                            <p>超级管理员</p>
-                        </div>
-                    </div>
-                    <div className='login-info'>
+                        <View className='user-info'>
+                            <Text style={{fontSize: '25px'}}><b>Adimin</b></Text>
+                            <Text style={{marginLeft: '10px'}}>超级管理员</Text>
+                        </View>
+                    </View>
+                    <View className='login-info'>
                         <pre>
-                            <p>上次登录时间:    <span>2025-2-20 17:18</span></p>
-                            <p>上次登录地点:    <span>武汉-洪山区-华中科技大学</span></p>
+                            <Text>上次登录时间:    <span>2025-2-20 17:18</span></Text>
+                            <Text style={{marginLeft: '15px'}}>上次登录地点:    <span>武汉-洪山区-华中科技大学</span></Text>
                         </pre>
-                    </div>
-                </div>
-                <div className='card'>
+                    </View>
+                </View>
+                <View className='card'>
                     <Table rowKey={'name'} columns={tableColumns} dataSource={tableData} pagination={false} />
-                </div>
-            </div>
-            <div className='rightcolumn'>
-                <div className='sale-row'>
+                </View>
+            </View>
+            <View className='rightcolumn'>
+                <View className='sale-row'>
                     {countData.map((item, index) => {
                         return (
-                            <div 
+                            <View 
                             className='card' 
                             key={index}
                             style={{
@@ -166,19 +168,19 @@ function Home() {
                                 alignItems: 'center',
                                 height: '100px',
                                 margin: '10px 5px 5px 5px'}}>
-                                <div className='icon-box' style={{backgroundColor: item.color}}>
+                                <View className='icon-box' style={{backgroundColor: item.color}}>
                                     {iconToElement(item.icon)}
-                                </div>
-                                <div className='sale-info'>
-                                    <p className='sale-title' style={{ fontSize: '14px' ,color: 'LightGray' }}>{item.name}</p>
-                                    <p className='sale-value' style={{ fontSize: '20px' }}><b>￥</b>{item.value}</p>
-                                </div>
-                            </div>
+                                </View>
+                                <View className='sale-info'>
+                                    <Text className='sale-title' style={{ fontSize: '14px' ,color: 'LightGray' }}>{item.name}</Text>
+                                    <Text className='sale-value' style={{ fontSize: '20px' }}><b>￥</b>{item.value}</Text>
+                                </View>
+                            </View>
                         )}
                     )}
-                </div>
-                <div className='chart-row' style={{justifyContent: 'center'}}>
-                    <div 
+                </View>
+                <View className='chart-row' style={{justifyContent: 'center'}}>
+                    <View 
                     className='card'
                     style={{display: 'flex', height: '240px', width: '680px', alignItems: 'center'}}>
                         {echartData.order&&
@@ -187,9 +189,9 @@ function Home() {
                         isAxisChart='true' 
                         style={{height: '260px', width: '640px'}}
                         />}
-                    </div>
-                </div>
-                <div className='chart-row' style={{justifyContent: 'space-between'}}>
+                    </View>
+                </View>
+                <View className='chart-row' style={{justifyContent: 'space-between'}}>
                     {echartData.video&&
                         <Echarts 
                         chartData={echartData.video} 
@@ -202,9 +204,10 @@ function Home() {
                         isAxisChart='true'
                         style={{height: '260px', width: '380px', marginRight: '10px'}}
                     />}
-                </div>
-            </div>
-        </div>
+                </View>
+            </View>
+        </View>
+        </View>
     );
 }
 
