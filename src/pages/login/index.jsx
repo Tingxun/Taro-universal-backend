@@ -1,5 +1,5 @@
-import Taro, { useDidShow } from '@tarojs/taro';
-import { View, Button, Input, Checkbox } from '@tarojs/components';
+import Taro, { useDidShow, showToast } from '@tarojs/taro';
+import { View, Button, Input, Checkbox, Form } from '@tarojs/components';
 import { useCallback, useState } from 'react';
 import { getMenu } from '../../api/index';
 import './login.css';
@@ -15,24 +15,20 @@ function Login() {
   // 使用useCallback优化事件处理函数
   const handleSubmit = useCallback(() => {
     const { username, password } = formData;
-    if (!username) {
-      Taro.showToast({
-        title: '请输入账号名',
+    console.log('formData', formData);
+    if (!username||!password) {
+      showToast({
+        title: '请输入账号名和密码',
         icon: 'none',
       });
+      console.log('loginForm', formData);
       return;
     }
-    if (!password) {
-      Taro.showToast({
-        title: '请输入密码',
-        icon: 'none',
-      });
-      return;
-    }
+
     getMenu(formData).then((res) => {
       console.log('res', res);
       if (res.data.code === -20000) {
-        Taro.showToast({
+        showToast({
           title: res.data.data.message,
           icon: 'none',
         });
@@ -57,37 +53,46 @@ function Login() {
 
   return (
     <View className="login-container">
-      <View className="login-title">系统登录</View>
+      <View className="login-header">
+        <View className="login-title">系统登录</View>
+        <View className="login-subtitle">请输入您的账户信息</View>
+      </View>
+
       <View className="form-item">
-        <View className="label">账号名</View>
+        <View className="input-label">账号</View>
         <Input
-          placeholder="请输入账号名"
+          placeholder="请输入账号"
+          className="custom-input"
           value={formData.username}
           onInput={(e) => setFormData({ ...formData, username: e.detail.value })}
         />
       </View>
+
       <View className="form-item">
-        <View className="label">密码</View>
+        <View className="input-label">密码</View>
         <Input
           password
           placeholder="请输入密码"
+          className="custom-input"
           value={formData.password}
           onInput={(e) => setFormData({ ...formData, password: e.detail.value })}
         />
       </View>
-      <View className="form-item" style={{display: 'flex', alignItems: 'center'}}>
+      
+      <View className="form-item remember-section">
         <Checkbox
           checked={formData.remember}
-          style={{width: '24px'}}
+          className="custom-checkbox"
           onChange={(e) => setFormData({ ...formData, remember: e.detail.value })}
-        ></ Checkbox>
-        <View style={{marginLeft: '5px', marginTop: '10px'}}>记住密码</View>
+        />
+        <View className="remember-text">记住登录状态</View>
       </View>
-      <View className="login-button">
-        <Button type="primary" onClick={handleSubmit} style={{marginRight: '10px'}}>
-          登录
+
+      <View className="action-buttons">
+        <Button className="login-btn primary" onClick={handleSubmit}>
+          立即登录
         </Button>
-        <Button>注册</Button>
+        <Button className="login-btn link">注册新账户</Button>
       </View>
     </View>
   );

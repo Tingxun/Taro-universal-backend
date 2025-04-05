@@ -1,74 +1,162 @@
-/* login.css */
 .login-container {
-    width: 350px;
-    border: 1px solid #eaeaea;
-    margin: 180px auto;
-    padding: 35px 35px 15px 35px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /* 容器基础样式保持不变 */
+  width: 86%;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  /* 新增过渡动画 */
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-container:hover {
+  box-shadow: 0 8px 30px rgba(22, 119, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 表单项层级优化 */
+.login-container .form-item {
+  margin-bottom: 15px;
+}
+
+.login-container .form-item .input-label {
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.login-container .form-item .custom-input {
+  /* 原有样式保持不变 */
+  height: 40px;
+  font-size: 14px;
+  padding: 0 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  
+  /* 新增对齐修正 */
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+}
+
+/* 添加 placeholder 对齐修正 */
+.login-container .form-item .custom-input::placeholder {
+  position: relative;
+  top: 1px;
+  color: #c0c4cc;
+  font-size: 13px;
+}
+
+/* 记住密码区域层级优化 */
+.login-container .remember-section {
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
+}
+
+.login-container .remember-section .custom-checkbox {
+  transform: scale(1);
+  margin-right: 10px;
+}
+
+.login-container .remember-section .remember-text {
+  color: #666;
+  font-size: 13px;
+}
+
+.login-container .action-buttons {
+  margin-top: 30px;
+}
+
+.login-container .login-btn {
+  /* 按钮基础样式 */
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+/* 保持原有按钮颜色样式 */
+.login-container .login-btn.primary {
+  background: #1677ff;
+  color: white;
+  margin-bottom: 15px;
+  /* 新增悬停效果 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-container .login-btn.primary:hover {
+  background: #4096ff;
+  box-shadow: 0 4px 12px rgba(22, 119, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.login-container .login-btn.link:hover {
+  background: rgba(22, 119, 255, 0.06);
+}
+
+.login-container .form-item .custom-input:hover {
+  border-color: #a0c2ff;
+}
+
+.login-container .remember-section:hover .custom-checkbox {
+  transform: scale(1.2);
+  color: #4096ff;
+}
+
+/* 保持原有代码结构 */
+.login-container .remember-section .custom-checkbox {
+  transition: all 0.2s ease;  /* 添加过渡动画 */
+}
+
+.login-btn.primary:active {
+  background: #4096ff;
+}
+
+.login-btn.link {
+  background: transparent;
+  color: #1677ff;
+  border: none;
+}
+
+
+.login-container .login-header {
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .login-container .login-title {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #505458;
-    font-size: 20px;
-    width: 100%;
+  font-size: 26px;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
 }
 
-.login-container .form-item {
-    width: 100%;
-    margin-bottom: 16px;
-    font-size: 14px;
+.login-container .login-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: #1677ff;
+  border-radius: 2px;
 }
 
-.login-container .form-item .taro-checkbox_checked {
-    width: 20px;
-    height: 20px;
-}
-
-.login-container .form-item .label {
-    display: block;
-    margin-bottom: 5px;
-    color: black;
-    font-size: 14px;
-}
-
-.login-container .form-item input {
-    width: 100%;
-    height: 32px;
-    padding: 0 10px;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-.login-container .login-button {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.login-container .login-button taro-button-core {
-    background-color: #1677ff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    width: 50%;
-    height: 32px;
-    text-align: center;
-    vertical-align: middle;
-    margin: 0;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.login-container .login-button button:last-child {
-    margin-right: 0;
+.login-container .login-subtitle {
+  color: #7f8c8d;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  margin-top: 8px;
 }
