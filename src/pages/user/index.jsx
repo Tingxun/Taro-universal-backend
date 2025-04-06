@@ -1,5 +1,6 @@
 import React from 'react';  
 import { useState, useEffect } from 'react';
+import { View, Form, Input, Button } from '@tarojs/components';
 import './user.css';
 import { getUserList, createUser, updateUser, deleteUser } from '../../api/index';
 import { Table, Popconfirm, Modal} from 'antd';
