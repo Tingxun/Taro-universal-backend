@@ -1,4 +1,5 @@
 import * as echarts from 'echarts';
+import { View } from '@tarojs/components';
 import '../../pages/home/home.css'
 import { useEffect, useRef} from 'react';
 
@@ -79,8 +80,8 @@ function Echarts({style, chartData, isAxisChart = true}) {
         echartObj.current.setOption(option);    
     }, [chartData, isAxisChart]);
     return (
-        <div style={style} ref={echartRef}>
-        </div>
+        <View style={style} ref={echartRef}>
+        </View>
     );
 }
 

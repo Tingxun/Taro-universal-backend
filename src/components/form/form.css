@@ -1,37 +1,48 @@
-.modal-form input[type=text] {
-    width: 200px;
-    height: 32px;
-    border-radius: 10px;
-    padding-left: 10px; 
+.modal-form {
+  padding: 20px;
+  font-size: 16px;
 }
-.modal-form input[type=text]:hover {
-    background-color: #f2f2f2;
+
+.modal-form Label {
+  display: block;
+  margin: 2px 0 2px 0;  
+  color: #333;
 }
-.modal-form input[type=radio] {
-    margin-left: 20px;
+
+.modal-form Input {
+  width: 100%;
+  height: 36px;  
+  margin: 0 0 8px 0; 
+  border-radius: 8px;
+  padding: 0 12px;
+  margin: 5px 0 15px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
 }
-.modal-form input[type=text] {
-    margin: 10px 0 10px 50px;
-    width: 360px;
-    border: 1px solid rgb(211, 211, 211);
+
+.modal-form Input:focus {
+  border-color: #1890ff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
 }
-.modal-form input[type=number] {
-    width: 360px;
-    height: 32px;
-    border-radius: 10px;
-    padding-left: 10px; 
-    margin: 10px 0 10px 50px;
-    border: 1px solid rgb(211, 211, 211);
+
+.modal-form .radio-group {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 15px 0;
 }
-.modal-form input[type=date] {
-    width: 360px;
-    height: 32px;
-    border-radius: 10px;
-    padding-left: 10px; 
-    margin: 10px 0 10px 50px;
-    border: 1px solid rgb(211, 211, 211);
+
+.modal-form Radio {
+  margin-right: 8px;
 }
+
+.modal-form .radio-label {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
 .modal-form .required-asterisk {
-    color: red;
-    margin-left: 2px;
+  color: #ff4d4f;
+  margin-right: 4px;
 }

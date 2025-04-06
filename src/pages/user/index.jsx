@@ -32,7 +32,7 @@ function User() {
             title: '性别',
             dataIndex: 'gender',
             render:(record) => {
-                return record ? '男' : '女';
+                return (record === '1') ? '男' : '女';
             }
         },
         {
@@ -123,6 +123,7 @@ function User() {
     };
     // 反馈输入变化
     function handleInputChange(e) {
+        console.log('userInfoFormData', e.target); // 调试：打印输入值
         if (e.target.type === 'radio') {
             setFormData({
                 ...formData,
@@ -134,6 +135,7 @@ function User() {
                 [e.target.name]: e.target.value
             });
         }
+        console.log('processedFormData', formData); // 调试：打印输入值
     };
     // 搜索用户
     function handleSearch() {
@@ -168,7 +170,7 @@ function User() {
         }
     
         // 检查性别是否为 0 或 1
-        if (formData.gender !== 0 && formData.gender !== 1) {
+        if (formData.gender !== '0' && formData.gender !== '1') {
             errors.gender = '请选择性别';
         }
     
