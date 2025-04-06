@@ -128,85 +128,101 @@ function Home() {
     
     return (
         <View className='home'>
-        <View className='flex-container'>
-            <View className='leftcolumn'>
-                <View className='card'>
-                    <View className='user'>
-                        <Image 
-                        className='user-avatar'
-                        src={userImg} 
-                        mode='aspectFill'
-                        style={{borderRadius: '50%', flex: '0 0 150px', width: '150px', height: '150px'}}
-                        />
-                        <View className='user-info'>
-                            <Text style={{fontSize: '25px'}}><b>Adimin</b></Text>
-                            <Text style={{marginLeft: '10px'}}>超级管理员</Text>
+            <View className='flex-container'>
+                <View className='leftcolumn'>
+                    <View className='card'>
+                        <View className='user'>
+                            <Image 
+                            className='user-avatar'
+                            src={userImg} 
+                            mode='aspectFill'
+                            style={{borderRadius: '50%', flex: '0 0 120px', width: '120px', height: '120px'}}
+                            />
+                            <View className='user-info'>
+                                <Text style={{fontSize: '25px', marginRight: '10px'}}><b>Adimin</b></Text>
+                                <Text>超级管理员</Text>
+                            </View>
+                        </View>
+                        <View className='login-info'>
+                                <Text>
+                                    <View style={{whiteSpace: 'pre-wrap',marginRight: '15px'}}>上次登录时间:    <span>2025-2-20 17:18</span></View>
+                                </Text>
+                                <Text>
+                                    <View style={{whiteSpace: 'pre-wrap'}}>上次登录地点:    <span>武汉-洪山区-华中科技大学</span></View>
+                                </Text>
                         </View>
                     </View>
-                    <View className='login-info'>
-                        <pre>
-                            <Text>上次登录时间:    <span>2025-2-20 17:18</span></Text>
-                            <Text style={{marginLeft: '15px'}}>上次登录地点:    <span>武汉-洪山区-华中科技大学</span></Text>
-                        </pre>
+                    <View className='card'>
+                        <Table rowKey={'name'} columns={tableColumns} dataSource={tableData} pagination={false} />
                     </View>
                 </View>
-                <View className='card'>
-                    <Table rowKey={'name'} columns={tableColumns} dataSource={tableData} pagination={false} />
-                </View>
-            </View>
-            <View className='rightcolumn'>
-                <View className='sale-row'>
-                    {countData.map((item, index) => {
-                        return (
-                            <View 
-                            className='card' 
-                            key={index}
-                            style={{
-                                display: 'flex',
-                                flex: '1 1 220px',
-                                justifyContent: 'space-around',
-                                alignItems: 'center',
-                                height: '100px',
-                                margin: '10px 5px 5px 5px'}}>
-                                <View className='icon-box' style={{backgroundColor: item.color}}>
-                                    {iconToElement(item.icon)}
+                <View className='rightcolumn'>
+                    <View className='sale-row'>
+                        {countData.map((item, index) => {
+                            return (
+                                <View 
+                                className='card' 
+                                key={index}
+                                style={{
+                                    display: 'flex',
+                                    flex: '1 1 100px',
+                                    justifyContent: 'space-around',
+                                    alignItems: 'center',
+                                    height: '100px',
+                                    margin: '8px 4px 4px 4px'}}>
+                                    <View className='icon-box' style={{backgroundColor: item.color}}>
+                                        {iconToElement(item.icon)}
+                                    </View>
+                                    <View className='sale-info'>
+                                        <Text className='sale-title' style={{ fontSize: '12px' ,color: 'Gray' }}>{item.name}</Text>
+                                        <Text className='sale-value' style={{ fontSize: '18px' }}><b>￥</b>{item.value}</Text>
+                                    </View>
                                 </View>
-                                <View className='sale-info'>
-                                    <Text className='sale-title' style={{ fontSize: '14px' ,color: 'LightGray' }}>{item.name}</Text>
-                                    <Text className='sale-value' style={{ fontSize: '20px' }}><b>￥</b>{item.value}</Text>
-                                </View>
-                            </View>
+                            )}
                         )}
-                    )}
-                </View>
-                <View className='chart-row' style={{justifyContent: 'center'}}>
-                    <View 
-                    className='card'
-                    style={{display: 'flex', height: '240px', width: '680px', alignItems: 'center'}}>
-                        {echartData.order&&
-                        <Echarts 
-                        chartData={echartData.order} 
-                        isAxisChart='true' 
-                        style={{height: '260px', width: '640px'}}
-                        />}
+                    </View>
+                    <View className='chart-row' style={{justifyContent: 'center'}}>
+                        <View 
+                        className='card'
+                        style={{
+                            display: 'flex', 
+                            height: '200px', 
+                            width: '490px',  // 从680px缩小
+                            alignItems: 'center',
+                            margin: '10px 0'  // 增加上下边距
+                        }}>
+                            {echartData.order&&
+                            <Echarts 
+                                chartData={echartData.order} 
+                                isAxisChart='true' 
+                                style={{height: '240px', width: '490px'}}  // 相应缩小
+                            />}
+                        </View>
+                    </View>
+                    <View className='chart-row' style={{justifyContent: 'space-between'}}>
+                        {echartData.video&&
+                            <Echarts 
+                                chartData={echartData.video} 
+                                isAxisChart='false'
+                                style={{
+                                    height: '200px', 
+                                    width: '200px',  // 从300px缩小
+                                    margin: '0 5px'  // 调整边距
+                                }}
+                            />}
+                        {echartData.user&&
+                            <Echarts 
+                                chartData={echartData.user} 
+                                isAxisChart='true'
+                                style={{
+                                    height: '200px', 
+                                    width: '270px',  // 从380px缩小
+                                    margin: '0 5px'  // 调整边距
+                                }}
+                            />}
                     </View>
                 </View>
-                <View className='chart-row' style={{justifyContent: 'space-between'}}>
-                    {echartData.video&&
-                        <Echarts 
-                        chartData={echartData.video} 
-                        isAxisChart='false'
-                        style={{height: '260px', width: '300px', marginLeft: '10px'}}
-                    />}
-                    {echartData.user&&
-                        <Echarts 
-                        chartData={echartData.user} 
-                        isAxisChart='true'
-                        style={{height: '260px', width: '380px', marginRight: '10px'}}
-                    />}
-                </View>
             </View>
-        </View>
         </View>
     );
 }

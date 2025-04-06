@@ -12,18 +12,26 @@
 /* 响应式断点 */
 /* 小程序端 (小于768px) */
 @media (max-width: 767px) {
-  .home .sale-row, .home .chart-row {
+  .home .sale-row,.home .chart-row {
     flex-direction: column;
   }
-  .home .leftcolumn, .home .rightcolumn, .home .col-8 {
+  .home .leftcolumn,.home .rightcolumn,.home .col-8 {
     flex: 100% !important;
   }
   .home .user {
     flex-direction: column;
     text-align: center;
   }
-  .home .user .user-info, .home .user .user-avatar {
+  .home .user .user-info,.home .user .user-avatar {
     flex: 100%;
+  }
+  
+  @media (max-width: 767px) {
+    .home .login-info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
   }
 }
 
@@ -60,11 +68,11 @@
 }
 
 .home .leftcolumn {
-  flex: 40%;
+  flex: 45%;
 }
 
 .home .rightcolumn {
-  flex: 60%;
+  flex: 55%;
 }
 
 .home .col-8 {
@@ -96,30 +104,31 @@
   flex: 50%;
 }
 .home .login-info {
-  text-align: start;
-  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 40px;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 20px;
 }
 .home .login-info text {
-  line-height: 2px;
+  line-height: 1.2px;
   font-size: 14px;
   color: lightgray;
 }
 .home .login-info text span {
-  line-height: 30px;
   font-size: 14px;
   color: gray;
 }
 .home .sale-row .icon-box {
-  width: 80px;
-  height: 80px;
-  line-height: 85px;
+  width: 50px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   color: white;
-  border-radius: 0 25px 0 25px;
+  border-radius: 0 10px 0 10px;
 }
-.home .sale-row .icon-box .anticon {
-  font-size: 30px;
-}
+
 .home .sale-row .sale-info {
   line-height: 30px;
   text-align: center;
