@@ -1,6 +1,6 @@
 import React from 'react';  
 import { useState, useEffect } from 'react';
-import { View, Form, Input, Button } from '@tarojs/components';
+import { View, Input, Button } from '@tarojs/components';
 import './user.css';
 import { getUserList, createUser, updateUser, deleteUser } from '../../api/index';
 import { Table, Popconfirm, Modal} from 'antd';
@@ -47,9 +47,9 @@ function User() {
         {
             title: '操作',
             render: (rowData) => (
-                <View>
+                <View className='table-btn'>
                     <Button
-                    className="edit-button" 
+                    className="edit-btn" 
                     onClick={() => {
                         setFormData({
                             id : rowData.id,
@@ -68,7 +68,7 @@ function User() {
                         okText="确定"
                         cancelText="取消"
                     ><Button 
-                    className="delete-button" 
+                    className="delete-btn" 
                     onClick={() => {
                         setFormData({
                         id : rowData.id,
@@ -216,13 +216,13 @@ function User() {
         <View className='user-container'>
             <View className='search-bar'>
                 <Button className='add-btn' onClick={() => handleEdit('add')} >+新增</Button>
-                <Form onSubmit={(e) => {e.preventDefault();handleSearch()}}>
-                    <Input 
+                <Input 
                     type="text" name='name' placeholder="    请输入用户名" 
-                    style={{marginRight: '10px', display: 'inline'}}
                     onChange={(e) => handleInputChange(e)} />
-                    <Button className='search-btn' formType='submit' style={{display: 'inline'}}>搜索</Button>
-                </Form>
+                <Button 
+                    className='search-btn' formType='submit'
+                    onClick={(e) => {console.log('e', e);e.preventDefault();handleSearch()}}
+                >搜索</Button>
             </View>
             <View className='card' sytle={{marginTop: '0'}}>
                 <Table rowKey={'id'} columns={tableColumns} dataSource={tableData} pagination={false} />
