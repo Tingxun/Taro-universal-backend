@@ -1,5 +1,5 @@
 import React from 'react';
-import Taro from '@tarojs/taro';
+import { View } from '@tarojs/components';
 import * as Icon from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import menuList from '../../config';
@@ -45,7 +45,7 @@ function AsideComponent({collapsed, setNavItem, setOutletPath}) {
 
     return (
         <Sider trigger={null} collapsible='ture' collapsed={collapsed}>
-            <h3 className="app-name" style={{ fontSize: collapsed ? 0 : 20 }}>通用后台管理系统</h3>
+            <View className="app-name" style={{ fontSize: collapsed ? 0 : 20 }}>通用后台管理系统</View>
             <Menu
             theme="dark"
             mode="inline"
