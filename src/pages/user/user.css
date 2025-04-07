@@ -1,6 +1,6 @@
 .user-container .search-bar {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
     align-items: center;
     height: 40px;
     padding: 0 10px;
@@ -22,7 +22,7 @@
     background-color: #1677ff;
     color: white;
     border-radius: 10px;
-    width: 60px;
+    width: 80px;
     height: 30px;
     font-size: 14px;
     text-align: center;
@@ -39,49 +39,35 @@
     background-color: #3388ff;
 }
 .user-container .search-bar button {
-    line-height: normal;
+    display: inline;
+    line-height: 30px;
+    text-align: center;
     white-space: nowrap;
 }
 
 .user-container .add-btn {
     margin-right: auto;
+    margin-left: 0;
 }
 
 .user-container .search-btn {
+    width: 30px;
+    height: 15px;
     margin-left: auto;
+    margin-right: 0;
+}
+.user-container .search-bar .weui-input {
+    width: 240px;
 }
 .user-container input[type=text] {
-    width: 200px;
-    height: 32px;
+    background-color: #f2f2f2;
     border-radius: 10px;
-    padding-left: 10px; 
+    line-height: 30px;
 }
 .user-container input[type=text]:hover {
-    background-color: #f2f2f2;
-}
-.user-container input[type=radio] {
-    margin-left: 20px;
-}
-.user-container .modal-form input[type=text] {
-    margin: 10px 0 10px 50px;
-    width: 360px;
-    border: 1px solid rgb(211, 211, 211);
-}
-.user-container .modal-form input[type=number] {
-    width: 360px;
-    height: 32px;
-    border-radius: 10px;
-    padding-left: 10px; 
-    margin: 10px 0 10px 50px;
-    border: 1px solid rgb(211, 211, 211);
-}
-.user-container .modal-form input[type=date] {
-    width: 360px;
-    height: 32px;
-    border-radius: 10px;
-    padding-left: 10px; 
-    margin: 10px 0 10px 50px;
-    border: 1px solid rgb(211, 211, 211);
+    background-color: #e6e6e6;  /* 比默认背景色稍深 */
+    border: 1px solid #1677ff;  /* 添加蓝色边框 */
+    transition: all 0.3s ease;  /* 添加平滑过渡效果 */
 }
 .user-container .required-asterisk {
     color: red;

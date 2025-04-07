@@ -217,10 +217,11 @@ function User() {
             <View className='search-bar'>
                 <Button className='add-btn' onClick={() => handleEdit('add')} >+新增</Button>
                 <Form onSubmit={(e) => {e.preventDefault();handleSearch()}}>
-                    <Input type="text" name='name' placeholder="    请输入用户名" 
-                    style={{marginRight: '10px'}}
+                    <Input 
+                    type="text" name='name' placeholder="    请输入用户名" 
+                    style={{marginRight: '10px', display: 'inline'}}
                     onChange={(e) => handleInputChange(e)} />
-                    <Button className='search-btn' formType='submit'>搜索</Button>
+                    <Button className='search-btn' formType='submit' style={{display: 'inline'}}>搜索</Button>
                 </Form>
             </View>
             <View className='card' sytle={{marginTop: '0'}}>
