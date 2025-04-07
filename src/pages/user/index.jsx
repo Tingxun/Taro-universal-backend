@@ -47,8 +47,8 @@ function User() {
         {
             title: '操作',
             render: (rowData) => (
-                <div>
-                    <button 
+                <View>
+                    <Button
                     className="edit-button" 
                     onClick={() => {
                         setFormData({
@@ -60,21 +60,21 @@ function User() {
                             birth: rowData.birth,
                         });
                         handleEdit('edit');}}
-                        >编辑</button>
+                        >编辑</Button>
                     <Popconfirm
                         title="提示"
                         description="此操作将删除用户，是否继续？"
                         onConfirm={() => handleDelete(rowData.id)}
                         okText="确定"
                         cancelText="取消"
-                    ><button 
+                    ><Button 
                     className="delete-button" 
                     onClick={() => {
                         setFormData({
                         id : rowData.id,
-                    });}} >删除</button>
+                    });}} >删除</Button>
                     </Popconfirm>
-                </div>
+                </View>
             )
         }
     ]
@@ -213,19 +213,19 @@ function User() {
 
     }
     return (
-        <div className='user-container'>
-            <div className='search-bar'>
-                <button onClick={() => handleEdit('add')} >+新增</button>
-                <form onSubmit={(e) => {e.preventDefault();handleSearch()}}>
-                    <input type="text" name='name' placeholder="    请输入用户名" 
+        <View className='user-container'>
+            <View className='search-bar'>
+                <Button className='add-btn' onClick={() => handleEdit('add')} >+新增</Button>
+                <Form onSubmit={(e) => {e.preventDefault();handleSearch()}}>
+                    <Input type="text" name='name' placeholder="    请输入用户名" 
                     style={{marginRight: '10px'}}
                     onChange={(e) => handleInputChange(e)} />
-                    <button type='submit'>搜索</button>
-                </form>
-            </div>
-            <div className='card' sytle={{marginTop: '0'}}>
+                    <Button className='search-btn' formType='submit'>搜索</Button>
+                </Form>
+            </View>
+            <View className='card' sytle={{marginTop: '0'}}>
                 <Table rowKey={'id'} columns={tableColumns} dataSource={tableData} pagination={false} />
-            </div>
+            </View>
             <Modal
                 title={(editType !== '') &&editType === 'add' ? '新增用户' : '编辑用户'}
                 open={isModalOpen}
@@ -245,7 +245,7 @@ function User() {
             >
                 <UserInfoForm handleInputChange={handleInputChange} formData={formData} />
             </Modal>
-        </div>
+        </View>
     );
 }
 
